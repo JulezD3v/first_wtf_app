@@ -1,5 +1,5 @@
 import 'package:first_wtf_app/bottom_navigation.dart';
-import 'package:first_wtf_app/home_page.dart';
+
 import 'package:flutter/material.dart';
 
 void main() {
