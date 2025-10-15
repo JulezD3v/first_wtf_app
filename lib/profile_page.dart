@@ -11,7 +11,93 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("profile page"),);
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Profile"),
+        centerTitle: true,
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.settings))],
+      ),
+      body: ListView(
+        padding: EdgeInsets.all(16),
+        children: [
+          _buildProfilePics(),
+          _buildDetails(),
+          SizedBox(height: 16),
+
+          _buildAccountSection(),
+          SizedBox(height: 16),
+
+          _buildSupportSection(),
+          SizedBox(height: 56),
+          ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red.shade100,
+              foregroundColor: Colors.red.shade900,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8)
+              )
+            ),
+            onPressed: () {},
+            icon: Icon(Icons.logout),
+            label: Text("Logout"),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Column _buildSupportSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Support",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+        ),
+        ListTile(
+          title: Text("About us", style: TextStyle(fontSize: 16)),
+          trailing: Icon(Icons.arrow_forward_ios_outlined, size: 16),
+        ),
+        Divider(),
+        ListTile(
+          title: Text("Contact us", style: TextStyle(fontSize: 16)),
+          trailing: Icon(Icons.arrow_forward_ios_outlined, size: 16),
+        ),
+      ],
+    );
+  }
+
+  Column _buildAccountSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Account",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+        ),
+        ListTile(
+          title: Text("Personal Information", style: TextStyle(fontSize: 16)),
+          trailing: Icon(Icons.arrow_forward_ios_outlined, size: 16),
+        ),
+        Divider(),
+        ListTile(
+          title: Text("Payment Mwthods", style: TextStyle(fontSize: 16)),
+          trailing: Icon(Icons.arrow_forward_ios_outlined, size: 16),
+        ),
+        Divider(),
+        ListTile(
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context){
+                return NotificationsPage();
+              })
+            );
+          },
+          title: Text("Notifications", style: TextStyle(fontSize: 16)),
+          trailing: Icon(Icons.arrow_forward_ios_outlined, size: 16),
+        ),
+      ],
+    );
   }
 
   Widget _buildProfilePics() {
