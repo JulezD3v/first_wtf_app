@@ -1,5 +1,6 @@
 import 'package:first_wtf_app/bottom_navigation.dart';
 
+import 'package:first_wtf_app/onboarding_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,8 +17,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
       ),
-      debugShowCheckedModeBanner: false,
-      home: BottomNavigation()
+      debugShowCheckedModeBanner: false, 
+      routes: {
+        "/": (context)=> OnboardingPage(),
+        "/home": (context)=> BottomNavigation(),
+      },
+      // home: BottomNavigation()
     );
   }
 }
