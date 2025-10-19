@@ -1,6 +1,6 @@
 import 'package:first_wtf_app/bottom_navigation.dart';
-
-import 'package:first_wtf_app/onboarding_page.dart';
+import 'package:first_wtf_app/pages/login_page.dart';
+import 'package:first_wtf_app/pages/onboarding_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -21,7 +21,9 @@ class MyApp extends StatelessWidget {
       routes: {
         "/": (context)=> OnboardingPage(),
         "/home": (context)=> BottomNavigation(),
+        "/login": (context)=> LoginPage()
       },
+      initialRoute: "/login",
       // home: BottomNavigation()
     );
   }

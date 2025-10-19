@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:first_wtf_app/pages/login_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -14,6 +15,18 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.only(right: 16),
             child: Icon(Icons.search),
           ),
+            TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LoginPage()),
+              );
+            },
+            child: Text(
+              "Login",
+              style: TextStyle(color: const Color.fromARGB(255, 8, 8, 8)),
+            ),
+      )
         ],
         leading: Icon(Icons.menu),
       ),
@@ -23,7 +36,7 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal:16, vertical: 4,),
             child: TextField(
               decoration: InputDecoration(
-                fillColor: Colors.grey.shade200,
+                fillColor: const Color.fromARGB(255, 117, 119, 126),
                 filled: true,
                 prefixIcon: Icon(Icons.search),
                 hintText: "Search hospital or address",
