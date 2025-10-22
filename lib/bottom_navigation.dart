@@ -17,7 +17,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[indexToBeShown],//IndexedStack is an alternative
+      body: pages[indexToBeShown],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: indexToBeShown,
         onTap: (newIndex) {
