@@ -4,67 +4,61 @@ import 'package:first_wtf_app/widgets/password_textfield.dart';
 import 'package:first_wtf_app/widgets/social_signin.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart'; 
-import 'package:first_wtf_app/pages/home_page.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
 
+  @override
+  State<SignupPage> createState() => _SignupPageState();
+}
+
+class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          spacing: 16,
           children: [
-            SizedBox(height: 120),
+            SizedBox(height: 100),
             Text(
-              "Welcome Back",
+              "Get Started",
               textAlign: TextAlign.center,
-              style: GoogleFonts.playfairDisplay(
+              style: GoogleFonts.play(
                 fontSize: 24,
                 fontWeight: FontWeight.w700,
                 color: Colors.blueAccent,
               ),
             ),
             Text(
-              "Been a while",
+              "Create an account to continue",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 32),
+            CustomTextField(label: "Username"),
             CustomTextField(label: "Email"),
-            SizedBox(height: 16),
             PasswordTextfield(),
-            SizedBox(height: 16),
+            PasswordTextfield(),
             CustomButton(
-              text: "Login",
+              text: 'Sign up',
               onPressed: () {
                 Navigator.of(context).pushReplacementNamed("/home");
               },
             ),
-            SizedBox(height: 24),
-            Row(
-              spacing: 8,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Expanded(child: Divider()), 
-                Text("Sign up with"), 
-                Expanded(child: Divider()),
-              ],
-            ),
-            Text("Icons here"),
-            SizedBox(height: 36,),
+            SocialSignIn(),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Don't have an account? "),
+                Text("Already have an account? "),
                 GestureDetector(
                   onTap: () {
-                    Navigator.of(context).pushReplacementNamed("/signup");
+                    Navigator.of(context).pushReplacementNamed("/login");
                   },
-                  child: Text("Sign up", style: TextStyle(color: Colors.blue)),
+                  child: Text("Login", style: TextStyle(color: Colors.blue)),
                 ),
               ],
             ),
