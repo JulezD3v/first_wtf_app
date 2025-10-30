@@ -1,17 +1,33 @@
+import 'package:first_wtf_app/provider/user_notifier.dart';
 import 'package:first_wtf_app/widgets/custom_button.dart';
 import 'package:first_wtf_app/widgets/custom_textfield.dart';
 import 'package:first_wtf_app/widgets/password_textfield.dart';
 import 'package:first_wtf_app/widgets/social_signin.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart'; 
-import 'package:first_wtf_app/pages/home_page.dart';
+import 'package:provider/provider.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    var userNotifier = Provider.of<UserNotifier>(context);
+
     return Scaffold(
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
@@ -34,15 +50,31 @@ class LoginPage extends StatelessWidget {
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 32),
-            CustomTextField(label: "Email"),
+            CustomTextField(
+              label: "Email",
+              textEditingController: emailController,
+            ),
             SizedBox(height: 16),
-            PasswordTextfield(),
+            PasswordTextfield(textEditingController: passwordController),
             SizedBox(height: 16),
             CustomButton(
               text: "Login",
               onPressed: () {
-                Navigator.of(context).pushReplacementNamed("/home");
+                // calling the login method in our notifier class
+                //
+                userNotifier.login(
+                  context, 
+                  emailController.text, 
+                  passwordController.text
+                );
+                
               },
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed("/forgot");
+              },
+              child: Text("Forgot Password?"),
             ),
             SizedBox(height: 24),
             Row(

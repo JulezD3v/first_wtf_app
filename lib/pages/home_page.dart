@@ -1,9 +1,15 @@
+import 'package:first_wtf_app/widgets/contact_item.dart';
 import 'package:flutter/material.dart';
 import 'package:first_wtf_app/pages/login_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,36 +36,74 @@ class HomePage extends StatelessWidget {
         ],
         leading: Icon(Icons.menu),
       ),
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal:16, vertical: 4,),
-            child: TextField(
-              decoration: InputDecoration(
-                fillColor: const Color.fromARGB(255, 117, 119, 126),
-                filled: true,
-                prefixIcon: Icon(Icons.search),
-                hintText: "Search hospital or address",
-                border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(12)
-                ),
+      body: DefaultTabController(
+        length: 2,
+        child: Column(
+          children: [
+            TabBar(
+              tabs: [
+                Tab(text: "Map"),
+                Tab(text: "List"),
+              ],
+            ),
+            Expanded(
+              child: TabBarView(
+                children: [
+                  // Widget for showing map image
+                  _buildMapView(),
+                  //Widget for list view
+                  _buildListView(),
+                ],
               ),
             ),
-          ),
-          // Widget for showing image
-          Padding(
-            padding: EdgeInsets.all(16),
-            child: Image.asset(
-              "assets/map.png", 
-              width: MediaQuery.sizeOf(context).width * 0.8, 
-              height: MediaQuery.sizeOf(context).height * 0.8,
-              fit: BoxFit.cover,
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
-}
 
+  Widget _buildListView() {
+    return ListView(
+      children: [
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+        ContactItem(),
+      ],
+    );
+  }
+
+  Widget _buildMapView() {
+    return ListView(
+      children: [
+        Image.asset(
+          "assets/map.png",
+          width: MediaQuery.sizeOf(context).width * 0.8,
+          height: MediaQuery.sizeOf(context).height * 1,
+          fit: BoxFit.cover,
+        ),
+      ],
+    );
+  }
+}
