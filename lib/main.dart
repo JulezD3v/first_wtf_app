@@ -1,6 +1,5 @@
 import 'package:first_wtf_app/bottom_navigation.dart';
 import 'package:first_wtf_app/pages/forgot_password_page.dart';
-import 'package:first_wtf_app/pages/home_page.dart';
 import 'package:first_wtf_app/pages/login_page.dart';
 import 'package:first_wtf_app/pages/onboarding_page.dart';
 import 'package:first_wtf_app/pages/signup_page.dart';
