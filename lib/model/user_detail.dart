@@ -4,7 +4,6 @@ class UserDetail {
     required this.name,
     required this.profilePicture,
     required this.email,
-    
   });
 
   final String name;
